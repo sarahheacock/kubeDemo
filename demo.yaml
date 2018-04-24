@@ -21,7 +21,7 @@ apiVersion: v1
 metadata:
   name: my-service
 spec:
-  type: NodePort
+  type: NodePort # can automatically create network load balancer
   selector:
     app: my-deployment
   ports:
