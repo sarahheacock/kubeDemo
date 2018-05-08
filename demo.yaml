@@ -14,18 +14,20 @@ spec:
     spec:
       containers:
       - name: demo
-        image: sarahheacock/hello-world-nginx:v1
+        image: sarahheacock/hello-world-nginx:v2
+        ports:
+        - containerPort: 80
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: my-service
 spec:
-  type: NodePort # can automatically create network load balancer
+  type: LoadBalancer # can automatically create network load balancer
   selector:
     app: my-deployment
   ports:
   - name: demo
-    port: 8080
+    port: 8888
     targetPort: 80
     nodePort: 31000
